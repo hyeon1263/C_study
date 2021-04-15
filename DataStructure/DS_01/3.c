@@ -1,3 +1,5 @@
+// 선택정렬으로 정렬 후 이진탐색으로 데이터 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -6,9 +8,9 @@
 #define COMPARE(x,y) (((x)<(y)) ? -1: ((x)==(y))? 0: 1)
 
 void sort(int[], int);
-// �������� (selection sort)�� �����ϴ� ���α׷�
+// 선택정렬 (selection sort)를 수행하는 프로그램
 int binsearch(int list[], int searchnum, int left, int right);
-// ����Ž�� (binary search)�� �����ϴ� ���α׷�
+// 이진탐색 (binary search)을 수행하는 프로그램
 
 int main(void)
 {
