@@ -1,10 +1,12 @@
+// (ë§¤í¬ë¡œë¥¼ ì´ìš©í•œ) ë™ì  í• ë‹¹ê³¼ í•´ì œ
+
 #include <stdio.h>
 #include <stdlib.h>
 #define MALLOC(p,s) if (!((p)=malloc(s))){\
 fprintf(stderr, "Insufficient memory");\
 exit(EXIT_FAILURE);\
 }
-// (¸ÅÅ©·Î¸¦ ÀÌ¿ëÇÑ) µ¿Àû ÇÒ´ç°ú ÇØÁ¦
+
 int main(void)
 {
 	int i, * pi;
