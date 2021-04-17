@@ -1,5 +1,5 @@
-// ÀÏÂ÷¿ø ¹è¿­ÀÇ ¿ø¼Ò °³¼ö¸¦ ÀÔ·Â¹Þ¾Æ µ¿ÀûÀ¸·Î ¸Þ¸ð¸®¸¦ ÇÒ´ç¹Þ¾Æ\
-	·£´ýÀ¸·Î 100º¸´Ù ÀûÀº °ª ³Ö±â
+// ì¼ì°¨ì› ë°°ì—´ì˜ ì›ì†Œ ê°œìˆ˜ë¥¼ ìž…ë ¥ë°›ì•„ ë™ì ìœ¼ë¡œ ë©”ëª¨ë¦¬ë¥¼ í• ë‹¹ë°›ì•„\
+	ëžœë¤ìœ¼ë¡œ 100ë³´ë‹¤ ì ì€ ê°’ ë„£ëŠ” 
 
 #include <stdio.h>
 #define MALLOC(p, s)\
@@ -26,7 +26,7 @@ int main()
 	int* ipp;
 	int i, num;
 
-	printf("ÀÏÂ÷¿ø ¹è¿­ÀÇ ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+	printf("ì¼ì°¨ì› ë°°ì—´ì˜ ìˆ˜ë¥¼ ìž…ë ¥í•˜ì„¸ìš”: ");
 	scanf_s("%d", &num);
 
 	ipp = make1dArray(num);
