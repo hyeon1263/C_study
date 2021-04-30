@@ -1,0 +1,96 @@
+//input data를 입력받아 선형큐에 저장, 삭제 및 출력하는 프로그램
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX_QUEUE_SIZE 3
+#define MAX_NAME_SIZE 20
+#define MAX_LEN 100
+
+
+typedef struct {
+	int id;
+	char name[MAX_NAME_SIZE];
+}element;
+
+element queue[MAX_QUEUE_SIZE];
+
+int main()
+{
+	FILE* fp;
+	char line[MAX_LEN];
+	char* tok;
+	char* next_str;
+	int rear = -1;
+	int front = -1;
+	int i, j, num;
+
+	fopen_s(&fp, "input.txt", "r");
+	if (fp == NULL)
+	{
+		fprintf(stderr, "cannot open file");
+		exit(EXIT_FAILURE);
+	}
+	printf("<< Linear queue operations where MAX_QUEUE_SIZE is 3>>\n");
+	printf("add 1 Jung \n");
+	printf("delete\n\n");
+	printf("**************************************************\n\n");
+	
+	while (fgets(line, sizeof(line), fp))
+	{
+		next_str = line;
+		tok = strtok_s(next_str, " \n", &next_str);
+		if (!strcmp(tok, "add")) 
+		{
+			rear++;
+			if (rear >= MAX_QUEUE_SIZE)
+			{
+				if (front > -1)
+				{
+					printf("data shift\n");
+					num = front;
+					for (i = 0; i <= num; i++)
+					{
+						for (j = front; j < rear; j++)
+						{
+							queue[j].id = queue[j + 1].id;
+							strcpy_s(queue[j].name, MAX_NAME_SIZE, queue[j + 1].name);
+						}
+						rear--;
+						front--;
+					}
+					sscanf_s(line + strlen(tok) + 1, "%d%s", &queue[rear].id, queue[rear].name, sizeof(queue[rear].name));
+				}
+				else 
+				{
+					printf("queue is full, not added\n");
+					rear--;
+				}
+			}
+			else 
+				sscanf_s(line + strlen(tok) + 1, "%d%s", &queue[rear].id, queue[rear].name, sizeof(queue[rear].name));
+		}
+		else if (!strcmp(tok, "delete"))
+		{
+			if (front == rear)
+			{
+				printf("queue is empty. cannot delete element.\n");
+				break;
+			}
+			front++;
+		}
+		else if (!strcmp(tok, "qprint"))
+		{
+			for (int i = front + 1; i <= rear; i++)
+				printf("%d %s\n", queue[i].id, queue[i].name);
+			printf("\n");
+		}
+		else if (!strcmp(tok, "quit"))
+			exit(1);
+		else
+			printf("wrong command! try again!\n\n");
+	}
+
+	fclose(fp);
+
+	return 0;
+}
